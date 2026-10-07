@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para o meu amor ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #ffc1dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.pagina {
+    display: none;
+    width: 92%;
+    max-width: 600px;
+    min-height: 80vh;
+    background: rgba(255,255,255,0.95);
+    border-radius: 30px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+    animation: aparecer 0.5s ease;
+    position: relative;
+}
+
+.pagina.ativa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #ff4f91;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #ff4f91;
+}
+
+p {
+    color: #444;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+button {
+    border: none;
+    padding: 14px 25px;
+    margin: 8px;
+    border-radius: 18px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.07);
+}
+
+.sim {
+    background: #ff5c9a;
+    color: white;
+}
+
+.nao {
+    background: #eeeeee;
+    color: #444;
+}
+
+.jogo {
+    width: 85%;
+    background: #ff76aa;
+    color: white;
+}
+
+.seta {
+    margin-top: 25px;
+    background: #ff5c9a;
+    color: white;
+    width: 65px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
+.mensagem {
+    font-size: 23px;
+    color: #ff4f91;
+    font-weight: bold;
+    margin: 15px;
+}
+
+
+/* =========================
+   CARTA
+========================= */
+
+.carta {
+    background: #fff5fa;
+    border: 2px solid #ffb0ce;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: left;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.carta p {
+    font-size: 17px;
+}
+
+
+/* =========================
+   PORCENTAGEM
+========================= */
+
+.porcentagem {
+    font-size: 45px;
+    color: #ff4f91;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.controle {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #ff5c9a;
+    color: white;
+    font-size: 28px;
+    padding: 0;
+}
+
+
+/* =========================
+   CORAÇÕES CAINDO
+========================= */
+
+.coracao-caindo {
+    position: fixed;
+    top: -60px;
+    pointer-events: none;
+    z-index: 9999;
+
+    animation-name: cair;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cair {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+#aviso {
+    display: none;
+    background: #ffe2ec;
+    color: #ff397f;
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#okAviso {
+    background: #ff5c9a;
+    color: white;
+    display: none;
+}
+
+
+/* =========================
+   LÍNGUAS
+========================= */
+
+.idioma {
+    width: 100%;
+    background: #fff0f6;
+    padding: 12px;
+    margin: 5px 0;
+    border-radius: 12px;
+    color: #444;
+    font-size: 17px;
+}
+
+.final {
+    font-size: 45px;
+    color: #ff4f91;
+    font-weight: bold;
+}
+
+
+/* =========================
+   BOTÃO VOLTAR
+========================= */
+
+.voltar {
+    background: #eeeeee;
+    color: #555;
+    font-size: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     PÁGINA 1
+========================= -->
+
+<section class="pagina ativa" id="pagina1">
+
+    <h1>💗 Perguntinhas 💗</h1>
+
+    <p>
+        Eu sou um bom namorado?
+    </p>
+
+    <div id="botoesInicial">
+
+        <button
+            class="sim"
+            onclick="responderSim()">
+
+            Sim ❤️
+
+        </button>
+
+        <button
+            class="nao"
+            onclick="responderNao()">
+
+            Não 😭
+
+        </button>
+
+    </div>
+
+    <p id="respostaInicial"></p>
+
+</section>
+
+
+<!-- =========================
+     CAMINHO DO SIM
+========================= -->
+
+<section class="pagina" id="pagina2">
+
+    <p class="mensagem">
+        yepppp, eu te amo muito meu bem ❤️
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(3)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina3">
+
+    <p>
+        só por causa disso vou fazer uma vale presente AGR 🤑✌️
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(4)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina4">
+
+    <h2>
+        🎮 Pergunta importante 🎮
+    </h2>
+
+    <p>
+        Você quer jogar qual jogo comigo
+        para comemorar seu dia especial?
+    </p>
+
+    <button
+        class="jogo"
+        onclick="escolherJogo('minecraft')">
+
+        Minecraft ⛏️
+
+    </button>
+
+    <button
+        class="jogo"
+        onclick="escolherJogo('roblox')">
+
+        Roblox 🎮
+
+    </button>
+
+    <button
+        class="jogo"
+        onclick="escolherJogo('bloodstrike')">
+
+        Blood Strike 🔥
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina5">
+
+    <p
+        id="respostaJogo"
+        class="mensagem">
+    </p>
+
+    <div id="extraRoblox"></div>
+
+    <button
+        class="seta"
+        onclick="irPara(6)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina6">
+
+    <p>
+        E é isso, eu sei que foi pouca coisa mas......
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(7)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina7">
+
+    <p>
+        pera, oque isso no próximo quadro? 👀
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(8)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina8">
+
+    <h2>
+        💗 Uma perguntinha... 💗
+    </h2>
+
+    <p>
+        quantos porcento você gosta de mim?
+    </p>
+
+    <div
+        class="porcentagem"
+        id="valor">
+
+        0%
+
+    </div>
+
+    <div class="controles">
+
+        <button
+            class="controle"
+            onclick="diminuir()">
+
+            −
+
+        </button>
+
+        <button
+            class="controle"
+            onclick="aumentar()">
+
+            +
+
+        </button>
+
+    </div>
+
+    <div id="aviso">
+
+        porcentagem muito pequena 😭
+
+    </div>
+
+    <button
+        id="okAviso"
+        onclick="fecharAviso()">
+
+        ok
+
+    </button>
+
+
+    <br>
+
+    <button
+        class="seta"
+        onclick="verificarPorcentagem()">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina9">
+
+    <p class="mensagem">
+        eu tbm te amo pra caramba meu amor ❤️
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(10)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina10">
+
+    <p>
+        agr, eu já tô quase terminando 👀
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(11)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina11">
+
+    <p>
+        ent pra fechar com chave de ouro,
+        queria te mostrar isso ❤️
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(12)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina12">
+
+    <h1>
+        💌 Uma carta para você 💌
+    </h1>
+
+    <div class="carta">
+
+        <p>
+            FELIZ ANIVERSÁRIO MEU ANJO! ❤️
+        </p>
+
+        <p>
+            Muitos anos de vida e felicidade para você.
+        </p>
+
+        <p>
+            Eu queria ter te dado um presente mais especial,
+            tipo um pessoalmente, mas como a gente ainda não
+            se conhece, decidi fazer isso pra você.
+        </p>
+
+        <p>
+            Eu te amo muito, e foi um milagre eu ter conseguido
+            você na minha vida.
+        </p>
+
+        <p>
+            Não vou te abandonar, e nem me separar de você.
+            Eu sou tão fiel que eu fiz até isso aqui pra você kakaka.
+        </p>
+
+        <p>
+            Enfim, já vai completar uns 5 meses de namoro em,
+            tamo juntos a muito tempo. ❤️
+        </p>
+
+        <p>
+            E de novo, feliz aniversário,
+            muitos anos de vida e felicidade para você.
+        </p>
+
+        <p>
+            Espero que você esteja feliz com meu presente.
+        </p>
+
+        <p>
+            Queria te dar Robux, mas só ano que vem,
+            me desculpa 😭.
+        </p>
+
+        <p>
+            Não tô recebendo o pé de meia,
+            então é meio difícil, porque meus pais
+            não iam me dar dinheiro pra moeda virtual né KKKKK.
+        </p>
+
+        <p>
+            Enfim, te amo muito, mas muito meu bem. ❤️
+        </p>
+
+        <p>
+            Na próxima página vai ter um presente 🤑✌️
+        </p>
+
+    </div>
+
+    <button
+        class="seta"
+        onclick="irPara(13)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina13">
+
+    <h1>
+        Eu te amo em 10 línguas diferentes ❤️
+    </h1>
+
+    <div class="idioma">
+        🇧🇷 Português — Eu te amo
+    </div>
+
+    <div class="idioma">
+        🇺🇸 Inglês — I love you
+    </div>
+
+    <div class="idioma">
+        🇪🇸 Espanhol — Te amo
+    </div>
+
+    <div class="idioma">
+        🇫🇷 Francês — Je t'aime
+    </div>
+
+    <div class="idioma">
+        🇮🇹 Italiano — Ti amo
+    </div>
+
+    <div class="idioma">
+        🇩🇪 Alemão — Ich liebe dich
+    </div>
+
+    <div class="idioma">
+        🇯🇵 Japonês — 愛してる (Aishiteru)
+    </div>
+
+    <div class="idioma">
+        🇰🇷 Coreano — 사랑해 (Saranghae)
+    </div>
+
+    <div class="idioma">
+        🇨🇳 Chinês — 我爱你 (Wǒ ài nǐ)
+    </div>
+
+    <div class="idioma">
+        🇷🇺 Russo — Я тебя люблю (Ya tebya lyublyu)
+    </div>
+
+    <p class="final">
+        ❤️ FIM ❤️
+    </p>
+
+    <p>
+      
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CAMINHO DO NÃO
+========================= -->
+
+<section class="pagina" id="pagina14">
+
+    <p class="mensagem">
+        oh.... ta bom...... 😔
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(15)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina15">
+
+    <p>
+        eh..... Eu não sei oque falar agr.....
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(16)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina16">
+
+    <p>
+        Eu...... Sla..... Tô triste um pouco 😔
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(17)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina17">
+
+    <p>
+        não esperava que você ia escolher isso......
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(18)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina18">
+
+    <p>
+        Enfim....... Saiba que eu te amo..... Okay? ❤️
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(19)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina19">
+
+    <p>
+        Eu acho que você não.......
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(20)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina20">
+
+    <p>
+        Eu deixei um negócio especial para você
+        no final caso você escolhece sim ❤️
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(21)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina21">
+
+    <p>
+        fiz isso com tanto carinho..... ❤️
+    </p>
+
+    <button
+        class="seta"
+        onclick="irPara(22)">
+
+        ➜
+
+    </button>
+
+</section>
+
+
+<section class="pagina" id="pagina22">
+
+    <p class="mensagem">
+        Eu..... Feliz aniversário meu anjo..... ❤️
+    </p>
+
+    <button
+        class="voltar"
+        onclick="voltarParaInicio()">
+
+        voltar e mudar minha resposta 😭
+
+    </button>
+
+</section>
+
+
+<script>
+
+
+/* =========================
+   VARIÁVEIS
+========================= */
+
+let porcentagem = 0;
+
+let recusouUmaVez = false;
+
+
+/* =========================
+   TROCAR DE PÁGINA
+========================= */
+
+function irPara(numero) {
+
+    document.querySelectorAll(".pagina").forEach(pagina => {
+
+        pagina.classList.remove("ativa");
+
+    });
+
+    document
+        .getElementById("pagina" + numero)
+        .classList.add("ativa");
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* =========================
+   PRIMEIRA PERGUNTA
+========================= */
+
+function responderSim() {
+
+    irPara(2);
+
+}
+
+
+function responderNao() {
+
+    if (!recusouUmaVez) {
+
+        recusouUmaVez = true;
+
+        document.getElementById("botoesInicial").innerHTML = `
+
+            <p class="mensagem">
+                por que?:(
+            </p>
+
+            <button
+                class="sim"
+                onclick="voltarPergunta()">
+
+                responder 😭
+
+            </button>
+
+        `;
+
+    }
+
+    else {
+
+        irPara(14);
+
+    }
+
+}
+
+
+function voltarPergunta() {
+
+    document.getElementById("botoesInicial").innerHTML = `
+
+        <button
+            class="sim"
+            onclick="responderSim()">
+
+            Sim ❤️
+
+        </button>
+
+        <button
+            class="nao"
+            onclick="responderNao()">
+
+            Não 😭
+
+        </button>
+
+    `;
+
+    document.getElementById("respostaInicial").innerText = "";
+
+}
+
+
+/* =========================
+   VOLTAR AO INÍCIO
+========================= */
+
+function voltarParaInicio() {
+
+    recusouUmaVez = false;
+
+    document.getElementById("botoesInicial").innerHTML = `
+
+        <button
+            class="sim"
+            onclick="responderSim()">
+
+            Sim ❤️
+
+        </button>
+
+        <button
+            class="nao"
+            onclick="responderNao()">
+
+            Não 😭
+
+        </button>
+
+    `;
+
+    document.getElementById("respostaInicial").innerText = "";
+
+    irPara(1);
+
+}
+
+
+/* =========================
+   ESCOLHA DO JOGO
+========================= */
+
+function escolherJogo(jogo) {
+
+    let resposta = "";
+
+    let extra = "";
+
+
+    if (jogo === "minecraft") {
+
+        resposta =
+            "PERFEITO, fiz um mundo com um presente especial ⛏️❤️";
+
+    }
+
+
+    if (jogo === "roblox") {
+
+        resposta =
+            "BELEZA, escolhe o jogo que você quiser, que eu jogo com você 🎮❤️";
+
+        extra = `
+
+            <p>
+                me fala o jogo no PV, aí nois joga juntinhos,
+                E TEM QUE SER EM SERVE PV 😎
+            </p>
+
+        `;
+
+    }
+
+
+    if (jogo === "bloodstrike") {
+
+        resposta =
+            "Sabia akakak, tu ama jogar esse jogo comigo 🔥😂";
+
+    }
+
+
+    document.getElementById("respostaJogo").innerText =
+        resposta;
+
+    document.getElementById("extraRoblox").innerHTML =
+        extra;
+
+    irPara(5);
+
+}
+
+
+/* =========================
+   AUMENTAR PORCENTAGEM
+========================= */
+
+function aumentar() {
+
+    if (porcentagem < 100) {
+
+        porcentagem += 5;
+
+        atualizarPorcentagem();
+
+        soltarCoracoes("❤️");
+
+    }
+
+}
+
+
+/* =========================
+   DIMINUIR PORCENTAGEM
+========================= */
+
+function diminuir() {
+
+    if (porcentagem > 0) {
+
+        porcentagem -= 5;
+
+        atualizarPorcentagem();
+
+        soltarCoracoes("💔");
+
+    }
+
+}
+
+
+/* =========================
+   ATUALIZAR PORCENTAGEM
+========================= */
+
+function atualizarPorcentagem() {
+
+    document.getElementById("valor").innerText =
+        porcentagem + "%";
+
+}
+
+
+/* =========================
+   CHUVA DE CORAÇÕES
+========================= */
+
+function soltarCoracoes(tipo) {
+
+    for (let i = 0; i < 20; i++) {
+
+        const coracao =
+            document.createElement("div");
+
+        coracao.classList.add(
+            "coracao-caindo"
+        );
+
+        coracao.innerText =
+            tipo;
+
+        coracao.style.left =
+            Math.random() * 100 + "vw";
+
+        coracao.style.fontSize =
+            (20 + Math.random() * 30) + "px";
+
+        coracao.style.animationDuration =
+            (1.5 + Math.random() * 2) + "s";
+
+        coracao.style.animationDelay =
+            Math.random() * 0.5 + "s";
+
+        document.body.appendChild(
+            coracao
+        );
+
+        setTimeout(() => {
+
+            coracao.remove();
+
+        }, 4000);
+
+    }
+
+}
+
+
+/* =========================
+   VERIFICAR PORCENTAGEM
+========================= */
+
+function verificarPorcentagem() {
+
+    if (porcentagem < 100) {
+
+        document.getElementById("aviso")
+            .style.display = "block";
+
+        document.getElementById("okAviso")
+            .style.display = "inline-block";
+
+    }
+
+    else {
+
+        irPara(9);
+
+    }
+
+}
+
+
+/* =========================
+   FECHAR AVISO
+========================= */
+
+function fecharAviso() {
+
+    document.getElementById("aviso")
+        .style.display = "none";
+
+    document.getElementById("okAviso")
+        .style.display = "none";
+
+}
+
+</script>
+
+</body>
+  </html>
